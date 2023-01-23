@@ -1,0 +1,24 @@
+
+
+.logo-bar-three{
+    color:rgb(228, 224, 246);
+    background-color: var(--light-color);
+    width: 50%;
+    margin-top: 20px;
+    margin-right: 1px;
+    padding: 5px;
+    text-align: center;
+}
+
+.text-card{
+    font-size: 30px;
+    text-align: center;
+}
+
+.background{
+    margin-top: 160px;
+}
+
+.tab {
+    tab-size: 10;
+}

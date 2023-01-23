@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'client/css/client.css' %}">
+{% endblock %}
+
+{% block 'dashboard' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md card-dashboard">
+                <p onclick="display_form('add')" id="add" class="text-card">Add client</p>
+            </div> 
+            <div class="col-md card-dashboard">
+                <p onclick="display_form('update')" id="update" class="text-card">Update client</p>
+            </div>
+        </div>
+        <div id="add_client" class="add-client">
+            <br>
+            <form action="{% url 'client' %}" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md">
+                        <p>First name:</p>
+                        <input type="text" class="form-control" name="name" value="{{ name }}">
+                    </div>
+                    <div class="col-md">
+                        <p>Last name:</p>
+                        <input type="text" class="form-control" name="last_name" value="{{ last_name }}">
+                    </div>
+                </div>
+                <br>
+                <br>
+
+                <div class="row">
+                    <div class="col-md">
+                        <p>E-mail:</p>
+                        <input type="email" class="form-control" placeholder="exemple@email.com" name="email" value="{{ email }}">
+                    </div>
+                    <div class="col-md">
+                        <p>CPF:</p>
+                        <input type="text" class="form-control" placeholder="___.___.___-__" name="cpf" value="{{ cpf }}">
+                    </div>
+                    <div class="col-md">
+                        <p>Phone number:</p>
+                        <input type="text" class="form-control" name="phone" value="{{ phone }}">
+                    </div>
+                    <br>
+                </div>
+                <br>
+                <div>
+                    <hr>
+                    <br>
+                    <hr style="background-color:rgb(98, 87, 182);">
+                    <br>
+                    <h4>Pathology
+                        <span class="btn-add-patho" onclick="add_pathology()">add</span>
+                    </h4>
+                    <div id="form-pathology">
+                        <br>
+                        <input type='text' class='form-control' name='pathology' value="{{ pathology }}">
+                    </div>
+                    <br>
+                    <input type="submit" value="  submit  " class="btn-add-client">
+                </div> 
+            </form>
+        </div>
+        <br>
+
+        <div id="up_client">
+            <p></p>
+                <select id="get_client" onchange="get_client()" class="form-control">
+                    <option value=""></option>
+                    {% for client in clients %}
+                    <option value="{{client.id}}">{{client.name}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <div id="form-upd-client">
+                    <input type="hidden" id="id">
+                    <p>Name:</p>
+                    <input id="name" type="text" class='form-control'><br>
+                    <p>Last name:</p>
+                    <input id="last_name" type="text" class='form-control'><br>
+                    <p>E-mail:</p>
+                    <input id="email" type="text" class='form-control'><br>
+                    <p>CPF:</p>
+                    <input id="cpf" type="text" class='form-control'><br><br>
+                    <br>
+                    <input onclick="update_client()" type="submit" value="  Save  " class="btn-save">
+                </div> 
+        </div>
+    </div>
+    <div id="message-container">
+        <script>
+            let message = "{{message}}";
+            if(message == "client already exists"){
+                document.getElementById("message-container").innerHTML = message;
+            }else if(message.startsWith("Field")){
+                document.getElementById("message-container").innerHTML = message;
+            }
+        </script>
+    </div>
+<script type="text/javascript" src="{% static 'client/js/client.js' %}" defer></script>
+{% endblock %}

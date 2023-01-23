@@ -1,0 +1,74 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'general/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'general/css/general.css' %}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    {% block 'head' %}{% endblock %}
+
+    <title>{% block 'title' %}{% endblock %}</title>
+  </head>
+  <body>
+    
+    <div class="sidebar">
+        <div class="logo-details">
+            <div class="logo_name">GYM Neutron</div>
+            <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav-list">
+          <li>
+            <a href="{% url 'home' %}">
+              <i class='bx bx-grid-alt'></i>
+              <span class="links_name">Home</span>
+            </a>
+            <span class="tooltip">Home</span>
+          </li>
+          <li>
+          <a href="{% url 'instructor' %}">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">Instructor</span>
+          </a>
+          <span class="tooltip">Instructor</span>
+        </li>
+        <li>
+          <a href="{% url 'client' %}">
+            <i class='bx bxs-face' ></i>
+            <span class="links_name">Client</span>
+          </a>
+          <span class="tooltip">Client</span>
+        </li>
+        <li>
+          <a href="{% url 'training' %}">
+            <i class='bx bx-move-horizontal' ></i>
+            <span class="links_name">Training</span>
+          </a>
+          <span class="tooltip">Training</span>
+        </li>
+        <li>
+          <a href="{% url 'settings' %}">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Settings</span>
+          </a>
+          <span class="tooltip">Settings</span>
+        </li>
+        </ul>
+      </div>
+      
+      <section class="home-section">
+        {% block 'dashboard' %}
+        {% endblock %}
+      </section>
+
+    {% block 'body' %}
+    {% endblock %}
+    <script src="{% static 'general/js/base.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

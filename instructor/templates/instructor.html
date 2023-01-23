@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'instructor/css/instructor.css' %}">
+{% endblock %}
+
+{% block 'dashboard' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md card-dashboard">
+                <p onclick="display_form('add')" id="add" class="text-card">Add instructor</p>
+            </div> 
+            <div class="col-md card-dashboard">
+                <p onclick="display_form('update')" id="update" class="text-card">Update instructor</p>
+            </div>
+        </div>
+        <div id="add_instructor" class="add-instructor">
+            <br>
+            <form action="{% url 'instructor' %}" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md">
+                        <p>First name:</p>
+                        <input type="text" class="form-control" name="name" value="{{ name }}">
+                    </div>
+                    <div class="col-md">
+                        <p>Last name:</p>
+                        <input type="text" class="form-control" name="last_name" value="{{ last_name }}">
+                    </div>
+                </div>
+                <br>
+                <br>
+
+                <div class="row">
+                    <div class="col-md">
+                        <p>E-mail:</p>
+                        <input type="email" class="form-control" placeholder="exemple@email.com" name="email" value="{{ email }}">
+                    </div>
+                    <div class="col-md">
+                        <p>CPF:</p>
+                        <input type="text" class="form-control" placeholder="___.___.___-__" name="cpf" value="{{ cpf }}">
+                    </div>
+                    <div class="col-md">
+                        <p>Phone number:</p>
+                        <input type="text" class="form-control" name="phone" value="{{ phone }}">
+                    </div>
+                <input type="submit" value="  submit  " class="btn-add-instructor">
+                <br>
+            </form>
+        </div>
+        <div id="up_instructor">
+            <p></p>
+                <select id="get_instructor" onchange="get_instructor()" class="form-control">
+                    <option value=""></option>
+                    {% for instructor in instructors %}
+                    <option value="{{instructor.id}}">{{instructor.name}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <div id="form-upd-instructor">
+                    <input type="hidden" id="id">
+                    <p>Name:</p>
+                    <input id="name" type="text" class='form-control'><br>
+                    <p>Last name:</p>
+                    <input id="last_name" type="text" class='form-control'><br>
+                    <p>E-mail:</p>
+                    <input id="email" type="text" class='form-control'><br>
+                    <p>CPF:</p>
+                    <input id="cpf" type="text" class='form-control'><br><br>
+                    <br>
+                    <input onclick="update_instructor()" type="submit" value="  Save  " class="btn-save">
+                </div> 
+        </div>
+    </div>
+    <div id="message-container">
+        <script>
+            let message = "{{message}}";
+            if(message == "Instructor already exists"){
+                document.getElementById("message-container").innerHTML = message;
+            }else if(message.startsWith("Field")){
+                document.getElementById("message-container").innerHTML = message;
+            }
+        </script>
+    </div>
+<script type="text/javascript" src="{% static 'instructor/js/instructor.js' %}" defer></script>
+{% endblock %}

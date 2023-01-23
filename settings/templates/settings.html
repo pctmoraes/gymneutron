@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+{% endblock %}
+
+{% block 'dashboard' %}
+    <br>
+    <div class="background">
+        <p></p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md setting-value">
+                <div class="col-md title">
+                    <p class="text-card">Notification</p>
+                    <hr style="color: rgb(255, 255, 255);">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md setting-value">
+                <p class="col-md setting-value">Pop-up</p>
+            </div> 
+            <div class="col-md setting-value">
+                <p class="col-md setting-value">
+                    <button style="width: 12%; border: 0px; border-radius: 8px;">Yes</button>
+                </p>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md setting-value">
+                <p class="col-md setting-value">E-mail</p>
+            </div> 
+            <div class="col-md setting-value">
+                <p class="col-md setting-value">
+                    <button style="width: 12%; border: 0px; border-radius: 8px; color: darkgray;">No</button>
+                </p>
+            </div> 
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md setting-value">
+                <div class="col-md title">
+                    <p class="text-card">Accessibility</p>
+                    <hr style="color: rgb(255, 255, 255);">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md setting-value">
+                <p class="col-md setting-value">Enable color blindness mode</p>
+            </div> 
+            <div class="col-md setting-value">
+                <p class="col-md setting-value">
+                    <button style="width: 12%; border: 0px; border-radius: 8px; color: darkgray;">No</button>
+                </p>
+            </div> 
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md setting-value">
+                <div class="col-md title">
+                    <p class="text-card">Sessions</p>
+                    <hr style="color: rgb(255, 255, 255);">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md setting-value">
+                <p class="col-md setting-value">Windows 11 (Chrome) | IP 200.300.400.123</p>
+            </div> 
+            <div class="col-md setting-value">
+                <p class="col-md setting-value">
+                    <button style="width: 12%; border: 0px; border-radius: 8px; background-color: rgb(134, 60, 75);color: rgb(195, 190, 190);">Delete</button>
+                </p>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md setting-value">
+                <p class="col-md setting-value">Windows 10 (Opera) | IP 900.200.400.345</p>
+            </div> 
+            <div class="col-md setting-value">
+                <p class="col-md setting-value">
+                    <button style="width: 12%; border: 0px; border-radius: 8px; background-color: rgb(134, 60, 75); color: rgb(195, 190, 190);">Delete</button>
+                </p>
+            </div> 
+        </div>
+    </div>
+    
+
+{% endblock %}
